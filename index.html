@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+        <link href="fonts/chunkfive/stylesheet.css" rel="stylesheet">
+        <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+        <title>Chilcott Radio - 24 hour radio station reading the Iraq Inquiry report</title>
+        <style>
+            html {
+                font-family: 'chunkfiveroman';
+                line-height: 1.15;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            article, aside, footer, header, nav, section {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin: .67em 0;
+            }
+
+            figcaption, figure, main {
+                display: block;
+            }
+
+            figure {
+                margin: 1em 40px;
+            }
+
+            hr {
+                box-sizing: content-box;
+                height: 0;
+                overflow: visible;
+            }
+
+            pre {
+                font-family: monospace, monospace;
+                font-size: 1em;
+            }
+
+            a {
+                background-color: transparent;
+                -webkit-text-decoration-skip: objects;
+            }
+
+            a:active, a:hover {
+                outline-width: 0;
+            }
+
+            abbr[title] {
+                border-bottom: none;
+                text-decoration: underline;
+                text-decoration: underline dotted;
+            }
+
+            b, strong {
+                font-weight: inherit;
+            }
+
+            b, strong {
+                font-weight: bolder;
+            }
+
+            code, kbd, samp {
+                font-family: monospace, monospace;
+                font-size: 1em;
+            }
+
+            dfn {
+                font-style: italic;
+            }
+
+            mark {
+                background-color: #ff0;
+                color: #000;
+            }
+
+            small {
+                font-size: 80%;
+            }
+
+            sub, sup {
+                font-size: 75%;
+                line-height: 0;
+                position: relative;
+                vertical-align: baseline;
+            }
+
+            sub {
+                bottom: -.25em;
+            }
+
+            sup {
+                top: -.5em;
+            }
+
+            audio, video {
+                display: inline-block;
+            }
+
+            audio:not([controls]) {
+                display: none;
+                height: 0;
+            }
+
+            img {
+                border-style: none;
+            }
+
+            svg:not(:root) {
+                overflow: hidden;
+            }
+
+            button, input, optgroup, select, textarea {
+                font: inherit;
+                margin: 0;
+            }
+
+            optgroup {
+                font-weight: bold;
+            }
+
+            button, input {
+                overflow: visible;
+            }
+
+            button, select {
+                text-transform: none;
+            }
+
+            button, html [type="button"], [type="reset"], [type="submit"] {
+                -webkit-appearance: button;
+            }
+
+            button::-moz-focus-inner,
+            [type="button"]::-moz-focus-inner,
+            [type="reset"]::-moz-focus-inner,
+            [type="submit"]::-moz-focus-inner {
+                border-style: none;
+                padding: 0;
+            }
+
+            button:-moz-focusring,
+            [type="button"]:-moz-focusring,
+            [type="reset"]:-moz-focusring,
+            [type="submit"]:-moz-focusring {
+                outline: 1px dotted ButtonText;
+            }
+
+            fieldset {
+                border: 1px solid #c0c0c0;
+                margin: 0 2px;
+                padding: .35em .625em .75em;
+            }
+
+            legend {
+                box-sizing: border-box;
+                color: inherit;
+                display: table;
+                max-width: 100%;
+                padding: 0;
+                white-space: normal;
+            }
+
+            progress {
+                display: inline-block;
+                vertical-align: baseline;
+            }
+
+            textarea {
+                overflow: auto;
+            }
+
+            [type="checkbox"],
+            [type="radio"] {
+                box-sizing: border-box;
+                padding: 0;
+            }
+
+            [type="number"]::-webkit-inner-spin-button,
+            [type="number"]::-webkit-outer-spin-button {
+                height: auto;
+            }
+
+            [type="search"] {
+                -webkit-appearance: textfield;
+                outline-offset: -2px;
+            }
+
+            [type="search"]::-webkit-search-cancel-button,
+            [type="search"]::-webkit-search-decoration {
+                -webkit-appearance: none;
+            }
+
+            ::-webkit-file-upload-button {
+                -webkit-appearance: button;
+                font: inherit;
+            }
+
+            details, menu {
+                display: block;
+            }
+
+            summary {
+                display: list-item;
+            }
+
+            canvas {
+                display: inline-block;
+            }
+
+            template {
+                display: none;
+            }
+
+            [hidden] {
+                display: none;
+            }
+
+            #meta {
+                position: absolute;
+                top: 66%;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                text-align: center;
+                color: #fff;
+                -webkit-user-select: none;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        </style>
+    </head>
+    <body>
+        <audio id="player" class="video-js vjs-16-9 vjs-default-skin" preload="auto" poster="poster.jpg" autoplay controls>
+            <source src="http://xyris.cloud.steadman.io:8000/stream?type=.mp3" type='audio/mp3'>
+        </audio>
+
+        <div id="meta">
+            <h1>
+                <small class="now-reading">Tuning the wireless</small>
+                <small class="volume"></small>
+                <small class="section"></small><br>
+                <span class="title"></span>
+            </h1>
+        </div>
+
+        <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script>
+            videojs('player',
+                {
+                    responsive: true
+                }
+            );
+
+            function parseMusic(data) {
+                var filename = data['/stream'] ? data['/stream'].title : null;
+                var reportParts = {
+                    '01_introduction': ['Volume 1', '', 'Introduction'],
+                    '02_section-11': ['Volume 1', '1.1', 'UK strategy 1990 to 2000'],
+                    '03_section-12': ['Volume 1', '1.2', 'Development of UK strategy and options, September 2000 to September 2001'],
+                    '04_section-20': ['Volume 1', '2', 'Decision-making within government'],
+                    '05_section-31': ['Volume 1', '3.1', 'Development of UK strategy and options, 9/11 to early January 2002'],
+                    '06_section-32': ['Volume 1', '3.2', 'Development of UK strategy and options, January to April 2002 - "axis of evil" to Crawford'],
+                    '07_section-33': ['Volume 2', '3.3', 'Development of UK strategy and options, April to July 2002'],
+                    '08_section-34': ['Volume 2', '3.4', 'Development of UK strategy and options, late July to 14 September 2002'],
+                    '09_section-35': ['Volume 2', '3.5', 'Development of UK strategy and options, September to November 2002 - the negotiation of resolution 1441'],
+                    '10_section-36': ['Volume 3', '3.6', 'Development of UK strategy and options, November 2002 to January 2003'],
+                    '11_section-37': ['Volume 3', '3.7', 'Development of UK strategy and options, 1 February to 7 March 2003'],
+                    '12_section-38': ['Volume 3', '3.8', 'Development of UK strategy and options, 8 to 20 March 2003'],
+                    '13_section-40': ['Volume 4', '4', 'Iraq\'s weapons of mass destruction'],
+                    '14_section-41': ['Volume 4', '4.1', 'Iraq\'s WMD assessments, pre-July 2002'],
+                    '15_section-42': ['Volume 4', '4.2', 'Iraq\'s WMD assessments, July to September 2002'],
+                    '16_section-43': ['Volume 4', '4.3', 'Iraq\'s WMD assessments, October 2002 to March 2003'],
+                    '17_section-44': ['Volume 4', '4.4', 'The search for WMD'],
+                    '18_section-50': ['Volume 5', '5', 'Advice on the legal basis for military action, November 2002 to March 2003'],
+                    '19_section-61': ['Volume 5', '6.1', 'Development of the military options for an invasion of Iraq'],
+                    '20_section-62': ['Volume 5', '6.2', 'Military planning for the invasion, January to March 2003'],
+                    '21_section-63': ['Volume 6', '6.3', 'Military equipment (pre-conflict)'],
+                    '22_section-64': ['Volume 6', '6.4', 'Planning and preparation for a post-Saddam Hussein Iraq, mid-2001 to January 2003'],
+                    '23_section-65': ['Volume 6', '6.5', 'Planning and preparation for a post-Saddam Hussein Iraq, January to March 2003'],
+                    '24_section-70': ['Volume 6', '7', 'Conclusions: pre-conflict strategy and planning'],
+                    '25_section-80': ['Volume 7', '8', 'The invasion'],
+                    '26_section-91': ['Volume 7', '9.1', 'March to May 2003'],
+                    '27_section-92': ['Volume 7', '9.2', 'May 2003 to June 2004'],
+                    '28_section-93': ['Volume 7', '9.3', 'July 2004 to May 2005'],
+                    '29_section-94': ['Volume 7', '9.4', 'June 2005 to May 2006'],
+                    '30_section-95': ['Volume 8', '9.5', 'June 2006 to 27 June 2007'],
+                    '31_section-96': ['Volume 8', '9.6', '28 June 2007 to April 2008'],
+                    '32_section-97': ['Volume 8', '9.7', 'May 2008 to October 2009'],
+                    '33_section-98': ['Volume 8', '9.8', 'Conclusions: the post-conflict period'],
+                    '34_section-101': ['Volume 9', '10.1', 'Reconstruction: March 2003 to July 2004'],
+                    '35_section-102': ['Volume 9', '10.2', 'Reconstruction: July 2004 to July 2009'],
+                    '36_section-103': ['Volume 9', '10.3', 'Reconstruction: oil, commercial issues, debt relief, asylum and stabilisation policy'],
+                    '37_section-104': ['Volume 9', '10.4', 'Conclusions: Reconstruction'],
+                    '38_section-111': ['Volume 10', '11.1', 'De-Ba\'athification'],
+                    '39_section-112': ['Volume 10', '11.2', 'Conclusions: De-Ba\'athification'],
+                    '40_section-121': ['Volume 10', '12.1', 'Security Sector Reform'],
+                    '41_section-122': ['Volume 10', '12.2', 'Conclusions: Security Sector Reform'],
+                    '42_section-131': ['Volume 10', '13.1', 'Resources'],
+                    '43_section-132': ['Volume 10', '13.2', 'Conclusions: Resources'],
+                    '44_section-141': ['Volume 11', '14.1', 'Military equipment (post-conflict)'],
+                    '45_section-142': ['Volume 11', '14.2', 'Conclusions: Military equipment (post-conflict)'],
+                    '46_section-151': ['Volume 11', '15.1', 'Civilian personnel'],
+                    '47_section-152': ['Volume 11', '15.2', 'Conclusions: Civilian personnel'],
+                    '48_section-161': ['Volume 12', '16.1', 'The welfare of Service Personnel'],
+                    '49_section-162': ['Volume 12', '16.2', 'Support for injured Service Personnel and veterans'],
+                    '50_section-163': ['Volume 12', '16.3', 'Military fatalities and the bereaved'],
+                    '51_section-164': ['Volume 12', '16.4', 'Conclusions: Service Personnel'],
+                    '52_section-170': ['Volume 12', '17', 'Civilian casualties'],
+                    '53_section_annex-1': ['Volume 12', 'Annex 1', 'Iraq 1583 to 1960'],
+                    '54_section_annex-2': ['Volume 12', 'Annex 2', 'Glossary'],
+                    '55_section_annex-3': ['Volume 12', 'Annex 3', 'Names and posts'],
+                    '56_section_annex-4': ['Volume 12', 'Annex 4', 'Maps'],
+                    '57_section_annex-5': ['Volume 12', 'Annex 5', 'How to read and navigate the Report']
+                };
+
+                var reportPart = filename ? reportParts[filename] : null;
+
+                if(reportPart != null && typeof(reportPart) != 'undefined') {
+                    $('#meta .now-reading').text('Now reading');
+                    $('#meta .volume').text(reportPart[0]);
+                    $('#meta .section').text(reportPart[1] ? (': ' + reportPart[1]) : '');
+                    $('#meta .title').text(reportPart[2]);
+                } else {
+                    $('#meta .now-reading').text('Curses!');
+                    $('#meta .title').text('Chilcot Radio appears to be down!');
+                }
+            }
+
+            function checkCot() {
+                $.ajax(
+                    {
+                        url: 'http://xyris.cloud.steadman.io:8000/json.xsl',
+                        dataType: 'jsonp',
+                        jsonpCallback: 'parseMusic',
+                        crossDomain: true,
+                        error: function(e, x) {
+                            console.log(x);
+                            $('#meta .now-reading').text('Curses!');
+                            $('#meta .title').text('Chilcot Radio appears to be down!');
+                        }
+                    }
+                );
+            }
+
+            setInterval(
+                checkCot,
+                30000
+            );
+
+            checkCot();
+        </script>
+    </body>
+</html>
